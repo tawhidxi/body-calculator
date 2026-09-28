@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Target Calculator</title>
+  <meta name="description" content="Calculate your calorie, macro, water and step targets from weight, height, age, sex, steps and goal.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1>Body Target Calculator</h1>
+      <p class="subtitle">Get daily calories, macros, water, and steps from your stats.</p>
+    </header>
+
+    <section class="card" aria-labelledby="info-heading">
+      <h2 id="info-heading">Your information</h2>
+      <form id="calc-form" novalidate>
+        <div class="input-grid">
+          <div class="field">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" required min="30" max="300" step="0.1" placeholder="e.g. 75" autocomplete="off">
+            <p class="error" id="weight-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required min="14" max="90" step="1" placeholder="e.g. 30" autocomplete="off">
+            <p class="error" id="age-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" required>
+              <option value="" disabled selected>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <p class="error" id="sex-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" name="height" required min="120" max="230" step="0.1" placeholder="e.g. 178" autocomplete="off">
+            <p class="error" id="height-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="steps">Average daily steps</label>
+            <input type="number" id="steps" name="steps" required min="0" max="40000" step="1" placeholder="e.g. 8000" autocomplete="off" aria-describedby="steps-help steps-error">
+            <p class="helper" id="steps-help">Use your normal average, not your maximum.</p>
+            <p class="error" id="steps-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="goal">Goal</label>
+            <select id="goal" name="goal" required>
+              <option value="" disabled selected>Select</option>
+              <option value="fat-loss">Fat loss + muscle preservation</option>
+              <option value="maintain">Maintain</option>
+              <option value="lean-gain">Lean muscle gain</option>
+            </select>
+            <p class="error" id="goal-error" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Calculate my targets</button>
+      </form>
+    </section>
+
+    <section class="card results" id="results" hidden aria-labelledby="results-heading" aria-live="polite">
+      <h2 id="results-heading">Your daily targets</h2>
+      <div class="results-grid">
+        <article class="result-card">
+          <h3>Calories</h3>
+          <p class="result-value" id="res-calories">—</p>
+          <p class="result-unit">kcal / day</p>
+        </article>
+        <article class="result-card">
+          <h3>Protein</h3>
+          <p class="result-value" id="res-protein">—</p>
+          <p class="result-unit">g / day</p>
+        </article>
+        <article class="result-card">
+          <h3>Carbs</h3>
+          <p class="result-value" id="res-carbs">—</p>
+          <p class="result-unit">g / day</p>
+        </article>
+        <article class="result-card">
+          <h3>Fat</h3>
+          <p class="result-value" id="res-fat">—</p>
+          <p class="result-unit">g / day</p>
+        </article>
+        <article class="result-card">
+          <h3>Water</h3>
+          <p class="result-value" id="res-water">—</p>
+          <p class="result-unit">litres / day</p>
+        </article>
+        <article class="result-card">
+          <h3>Step target</h3>
+          <p class="result-value" id="res-steps">—</p>
+          <p class="result-unit">steps / day</p>
+        </article>
+      </div>
+      <p class="summary" id="summary-line"></p>
+      <button type="button" class="btn-secondary" id="recalculate-btn">Recalculate</button>
+    </section>
+  </main>
+</body>
+</html>
